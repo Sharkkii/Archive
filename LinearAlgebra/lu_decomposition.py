@@ -57,10 +57,11 @@ def lu_decomposition_outer_product_with_pivoting(A):
     
     for i in range(m-1):
 
-        i_star = np.argmax(np.abs(U[i:, i]))
-        Q1 = elementary_matrix1(A, 0, i_star)
+        i_star = np.argmax(np.abs(U[i:, i])) + i
+        Q1 = elementary_matrix1(A, i, i_star)
         Q1_inv = Q1.T
         P = np.dot(P, Q1_inv)
+        L[i,:i], L[i_star,:i] = L[i_star,:i].copy(), L[i,:i].copy()
         U = np.dot(Q1, U)
         
         for j in range(i+1, m):
@@ -120,3 +121,12 @@ def lu_decomposition_clout(A):
             U[i, j] /= L[i, i]
             
     return L, U
+
+
+# wrapper
+def lu_decomposition(A):
+    return lu_decomposition_inner_product(A)
+
+
+def plu_decomposition(A):
+    return lu_decomposition_outer_product_with_pivoting(A)
