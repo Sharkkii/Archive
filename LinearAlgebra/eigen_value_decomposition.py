@@ -1,4 +1,4 @@
-#### jacobi (eigen value decomposition) ####
+#### Eigen Value Decomposition ####
 
 import numpy as np
 
@@ -50,3 +50,8 @@ def jacobi_method(A):
     eigen_vecs = P
     
     return eigen_vals, eigen_vecs
+
+
+# wrapper
+def eigen_value_decomposition(A):
+    return jacobi_method(A)

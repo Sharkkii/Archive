@@ -96,3 +96,8 @@ def qr_decomposition_gram_schmidt(A):
                     col += 1
     
     return Q, R
+
+
+# wrapper
+def qr_decomposition(A):
+    return qr_decomposition_householder(A)
