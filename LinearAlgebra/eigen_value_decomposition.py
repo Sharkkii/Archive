@@ -48,6 +48,10 @@ def jacobi_method(A):
         
     eigen_vals = np.diagonal(A)
     eigen_vecs = P
+
+    idx = np.argsort(eigen_vals)[::-1]
+    eigen_vals = eigen_vals[idx]
+    eigen_vecs = eigen_vecs[:, idx]
     
     return eigen_vals, eigen_vecs
 
