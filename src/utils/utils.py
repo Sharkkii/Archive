@@ -16,5 +16,5 @@ def is_zero_vector(x):
 def padding_one(x):
     assert(x.ndim == 2)
     n, m = x.shape
-    x = np.concatenate([np.ones((n,1)), x], axis=1)
+    x = np.concatenate([x, np.ones((n,1))], axis=1)
     return x
